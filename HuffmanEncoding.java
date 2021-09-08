@@ -1,17 +1,14 @@
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashSet;
 import java.util.Hashtable;
-import java.util.LinkedList;
 import java.util.List;
-
+import java.io.File;
 
 public class HuffmanEncoding {
 
 	Hashtable<Character,Double> ft;
 	BinTree bt;
+	Hashtable<Character,String> tabela_final = new Hashtable<Character,String>();
+
 
 	private class Node{
 		
@@ -185,14 +182,20 @@ public class HuffmanEncoding {
 	}
 	
 	private void printEncodingAux(Node n, String code){
+
 		
 		if(n.getLeftChild() == null && n.getRightChild() == null){
-			System.out.println(n.character+" - "+code);
+			tabela_final.put(n.character,code);
 			return;
 		}
 		
 		printEncodingAux(n.getLeftChild(), code+"0");
 		printEncodingAux(n.getRightChild(), code+"1");
+	}
+	
+	public Hashtable<Character,String> cria_codificaçao(){
+
+		return tabela_final;
 	}
 	
 }

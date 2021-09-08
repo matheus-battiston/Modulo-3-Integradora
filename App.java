@@ -16,8 +16,8 @@ public class App {
 		int contador = 0;
 		Character aux;
 		double result;
-
-		ArrayList<Character> contado = new ArrayList();
+		String codifica = "";
+		ArrayList<Character> contado = new ArrayList<Character>();
 
 		try {
 			BufferedReader br = new BufferedReader(new FileReader(texto));
@@ -44,6 +44,7 @@ public class App {
 				}
 
 				}
+				br.close();
 		}
 		catch(IOException e) {
 				e.printStackTrace();
@@ -54,7 +55,28 @@ public class App {
 		HuffmanEncoding hf = new HuffmanEncoding(table);
 		
 		hf.printEncoding();
+		Hashtable<Character,String> codificaçao_final = hf.cria_codificaçao();
+		System.out.println(codificaçao_final);
 		
+
+		try {
+			BufferedReader br = new BufferedReader(new FileReader(texto));
+			while ((linha = br.readLine()) != null){
+				char[] letras = linha.toCharArray();
+				for (int i = 0; i < linha.length(); i++){
+					codifica = codifica + codificaçao_final.get(letras[i]);
+				}
+
+			}
+				br.close();
+		}
+		catch(IOException e) {
+				e.printStackTrace();
+
+		}
+		System.out.println(codifica);
+
+
 	}
 	
 }
