@@ -9,14 +9,30 @@ public class App {
 		
 		//FreqTable table = new FreqTable(3);
 		
-		Hashtable<Character,Double> table = new Hashtable<Character,Double>();
 		
+		
+		String arquivo = "texto.txt";
+	
+		Hashtable<Character,Double> table = calcula_frequencia(arquivo);
+		HuffmanEncoding hf = new HuffmanEncoding(table);
+		
+		hf.tabela_de_codificaçao();
+		Hashtable<Character,String> codificaçao_final = hf.get_codigo();
+		System.out.println(codificaçao_final);
+		hf.codifica_texto(arquivo,codificaçao_final);
+		
+
+	}
+
+	public static Hashtable<Character,Double> calcula_frequencia(String arquivo){
+
+		Hashtable<Character,Double> table = new Hashtable<Character,Double>();
 		File texto = new File("texto.txt");
 		String linha;
 		int contador = 0;
 		Character aux;
 		double result;
-		String codifica = "";
+
 		ArrayList<Character> contado = new ArrayList<Character>();
 
 		try {
@@ -48,35 +64,10 @@ public class App {
 		}
 		catch(IOException e) {
 				e.printStackTrace();
-
-		}
-
 		
-		HuffmanEncoding hf = new HuffmanEncoding(table);
-		
-		hf.printEncoding();
-		Hashtable<Character,String> codificaçao_final = hf.cria_codificaçao();
-		System.out.println(codificaçao_final);
-		
-
-		try {
-			BufferedReader br = new BufferedReader(new FileReader(texto));
-			while ((linha = br.readLine()) != null){
-				char[] letras = linha.toCharArray();
-				for (int i = 0; i < linha.length(); i++){
-					codifica = codifica + codificaçao_final.get(letras[i]);
-				}
-
-			}
-				br.close();
 		}
-		catch(IOException e) {
-				e.printStackTrace();
-
-		}
-		System.out.println(codifica);
-
-
-	}
+		return table;
 	
+	}	
+
 }

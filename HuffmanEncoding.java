@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
 import java.io.File;
+import java.io.*;
 
 public class HuffmanEncoding {
 
@@ -35,6 +36,11 @@ public class HuffmanEncoding {
 			this.leftChild = leftChild;
 			this.rightChild = rightChild;
 			
+		}
+
+		private void setCharacter(char character){
+			this.character = character;
+
 		}
 
 		public void setLeftChild(Node leftChild){
@@ -175,13 +181,13 @@ public class HuffmanEncoding {
 	}
 	
 
-	public void printEncoding(){
+	public void tabela_de_codificaçao(){
 		
-		printEncodingAux(bt.getRoot(),"");
+		tabela_de_codificaçao_aux(bt.getRoot(),"");
 		
 	}
 	
-	private void printEncodingAux(Node n, String code){
+	private void tabela_de_codificaçao_aux(Node n, String code){
 
 		
 		if(n.getLeftChild() == null && n.getRightChild() == null){
@@ -189,13 +195,59 @@ public class HuffmanEncoding {
 			return;
 		}
 		
-		printEncodingAux(n.getLeftChild(), code+"0");
-		printEncodingAux(n.getRightChild(), code+"1");
+		tabela_de_codificaçao_aux(n.getLeftChild(), code+"0");
+		tabela_de_codificaçao_aux(n.getRightChild(), code+"1");
 	}
 	
-	public Hashtable<Character,String> cria_codificaçao(){
+	public Hashtable<Character,String> get_codigo(){
 
 		return tabela_final;
+	}
+
+
+	/*public String decode(String code){
+
+		String resposta = "";
+		Node raiz = bt.getRoot();
+		Node z = new Node();
+		z = raiz;
+
+		for (int x = 0; x <code.length(); x++ ){
+			if (code.charAt(x) == '0'){
+				z.getLeftChild();
+			} else {
+				z.getRightChild();
+			}
+
+			if (z.getLeftChild()==null && z.getRightChild()==null){
+				resposta = resposta + 
+			}
+		}
+		return resposta;
+	}
+*/
+	public String codifica_texto(String texto, Hashtable<Character,String> codificaçao_final) {
+		String codifica = "";
+		String linha;
+
+		try {
+			BufferedReader br = new BufferedReader(new FileReader(texto));
+			while ((linha = br.readLine()) != null){
+				char[] letras = linha.toCharArray();
+				for (int i = 0; i < linha.length(); i++){
+					codifica = codifica + codificaçao_final.get(letras[i]);
+				}
+			}
+				br.close();
+		}
+		catch(IOException e) {
+				e.printStackTrace();
+
+		}
+		System.out.println(codifica);
+
+
+		return codifica;
 	}
 	
 }
