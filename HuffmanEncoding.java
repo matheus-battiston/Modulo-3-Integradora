@@ -181,13 +181,13 @@ public class HuffmanEncoding {
 	}
 	
 
-	public void tabela_de_codificaçao(){
+	public void tabela_de_codificacao(){
 		
-		tabela_de_codificaçao_aux(bt.getRoot(),"");
+		tabela_de_codificacao_aux(bt.getRoot(),"");
 		
 	}
 	
-	private void tabela_de_codificaçao_aux(Node n, String code){
+	private void tabela_de_codificacao_aux(Node n, String code){
 
 		
 		if(n.getLeftChild() == null && n.getRightChild() == null){
@@ -195,8 +195,8 @@ public class HuffmanEncoding {
 			return;
 		}
 		
-		tabela_de_codificaçao_aux(n.getLeftChild(), code+"0");
-		tabela_de_codificaçao_aux(n.getRightChild(), code+"1");
+		tabela_de_codificacao_aux(n.getLeftChild(), code+"0");
+		tabela_de_codificacao_aux(n.getRightChild(), code+"1");
 	}
 	
 	public Hashtable<Character,String> get_codigo(){
@@ -204,8 +204,8 @@ public class HuffmanEncoding {
 		return tabela_final;
 	}
 
-
-	/*public String decode(String code){
+	/////////////////REVISAR///////////////////
+	public String decode(String code){
 
 		String resposta = "";
 		Node raiz = bt.getRoot();
@@ -220,13 +220,14 @@ public class HuffmanEncoding {
 			}
 
 			if (z.getLeftChild()==null && z.getRightChild()==null){
-				resposta = resposta + 
+				resposta += z.character;//??
 			}
 		}
 		return resposta;
 	}
-*/
-	public String codifica_texto(String texto, Hashtable<Character,String> codificaçao_final) {
+	////////////REVISAR/////////////////
+
+	public String codifica_texto(String texto, Hashtable<Character,String> codificacao_final) {
 		String codifica = "";
 		String linha;
 
@@ -235,7 +236,7 @@ public class HuffmanEncoding {
 			while ((linha = br.readLine()) != null){
 				char[] letras = linha.toCharArray();
 				for (int i = 0; i < linha.length(); i++){
-					codifica = codifica + codificaçao_final.get(letras[i]);
+					codifica = codifica + codificacao_final.get(letras[i]);
 				}
 			}
 				br.close();

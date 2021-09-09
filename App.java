@@ -16,11 +16,12 @@ public class App {
 		Hashtable<Character,Double> table = calcula_frequencia(arquivo);
 		HuffmanEncoding hf = new HuffmanEncoding(table);
 		
-		hf.tabela_de_codificaçao();
-		Hashtable<Character,String> codificaçao_final = hf.get_codigo();
-		System.out.println(codificaçao_final);
-		hf.codifica_texto(arquivo,codificaçao_final);
+		hf.tabela_de_codificacao();
+		Hashtable<Character,String> codificacao_final = hf.get_codigo();
+		System.out.println(codificacao_final);
+		hf.codifica_texto(arquivo,codificacao_final);
 		
+		String palavradecode = hf.decode(codificacao_final.toString());//??
 
 	}
 
