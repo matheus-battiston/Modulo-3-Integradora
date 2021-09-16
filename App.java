@@ -1,3 +1,15 @@
+/* -----
+
+ 	Integrantes
+ 
+ 	Alison Carnetti, 
+	Igor Couto, 
+	Matheus Battiston, 
+	Gustavo Geyer, 
+	Michael Leite.
+
+*/ -----
+
 import java.util.Hashtable;
 import java.io.*;
 import java.util.ArrayList;
@@ -19,9 +31,10 @@ public class App {
 		hf.tabela_de_codificacao();
 		Hashtable<Character,String> codificacao_final = hf.get_codigo();
 		System.out.println(codificacao_final);
-		hf.codifica_texto(arquivo,codificacao_final);
+		String dec = hf.codifica_texto(arquivo,codificacao_final);
 		
-		String palavradecode = hf.decode(codificacao_final.toString());//??
+		String palavradecode = hf.decode(codificacao_final, dec);
+		System.out.println(palavradecode);
 
 	}
 

@@ -1,7 +1,11 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.io.File;
+import java.net.SocketPermission;
 import java.io.*;
 
 public class HuffmanEncoding {
@@ -204,28 +208,28 @@ public class HuffmanEncoding {
 		return tabela_final;
 	}
 
-	/////////////////REVISAR///////////////////
-	public String decode(String code){
+	public String decode(Hashtable<Character, String> code, String text){
 
-		String resposta = "";
-		Node raiz = bt.getRoot();
-		Node z = new Node();
-		z = raiz;
+		StringBuilder auxSB = new StringBuilder();
+		StringBuilder auxSB1 = new StringBuilder();
+		String key = null;
+		for (int i = 0; i < text.length(); i++) {
+			auxSB1.append(text.charAt(i));
+			if (code.containsValue(auxSB1.toString())) {
+				
+				for(Map.Entry entry: code.entrySet()){
+					if(auxSB1.toString().equals(entry.getValue())){
+						key = entry.getKey().toString();
+						break;
+					}
+				}
 
-		for (int x = 0; x <code.length(); x++ ){
-			if (code.charAt(x) == '0'){
-				z.getLeftChild();
-			} else {
-				z.getRightChild();
-			}
-
-			if (z.getLeftChild()==null && z.getRightChild()==null){
-				resposta += z.character;//??
+				auxSB.append(key);
+				auxSB1.setLength(0);
 			}
 		}
-		return resposta;
-	}
-	////////////REVISAR/////////////////
+		return auxSB.toString();
+    }
 
 	public String codifica_texto(String texto, Hashtable<Character,String> codificacao_final) {
 		String codifica = "";
