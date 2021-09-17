@@ -1,4 +1,4 @@
-package modulo3.src.main.java.com.integradora;
+package com.integradora;
 /* -----
 
  	Integrantes

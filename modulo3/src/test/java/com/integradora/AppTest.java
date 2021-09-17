@@ -1,4 +1,4 @@
-package modulo3.src.test.java.com.integradora;
+package com.integradora;
 
 import org.junit.jupiter.api.Test;
 
