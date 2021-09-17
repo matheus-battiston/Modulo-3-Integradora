@@ -26,7 +26,9 @@ public class App {
 		
 		String arquivo = "texto.txt";
 	
-		Hashtable<Character,Double> table = calcula_frequencia(arquivo);
+		File texto = new File("texto.txt");
+
+		Hashtable<Character,Double> table = calcula_frequencia(texto);
 		HuffmanEncoding hf = new HuffmanEncoding(table);
 		
 		hf.tabela_de_codificacao();
@@ -39,10 +41,9 @@ public class App {
 
 	}
 
-	public static Hashtable<Character,Double> calcula_frequencia(String arquivo){
+	public static Hashtable<Character,Double> calcula_frequencia(File texto){
 
 		Hashtable<Character,Double> table = new Hashtable<Character,Double>();
-		File texto = new File("texto.txt");
 		String linha;
 		int contador = 0;
 		Character aux;

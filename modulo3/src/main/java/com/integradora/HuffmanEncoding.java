@@ -1,4 +1,4 @@
-package modulo3.src.main.java.com.integradora;
+package com.integradora;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
