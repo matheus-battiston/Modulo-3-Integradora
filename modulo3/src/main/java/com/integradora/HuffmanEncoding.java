@@ -1,12 +1,11 @@
+package modulo3.src.main.java.com.integradora;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
-import java.io.File;
-import java.net.SocketPermission;
-import java.io.*;
 
 public class HuffmanEncoding {
 
@@ -33,20 +32,6 @@ public class HuffmanEncoding {
 			
 		}
 		
-		public Node(double freqVal, Node leftChild, Node rightChild){
-			
-			this.character = character;
-			this.freqVal = freqVal;
-			this.leftChild = leftChild;
-			this.rightChild = rightChild;
-			
-		}
-
-		private void setCharacter(char character){
-			this.character = character;
-
-		}
-
 		public void setLeftChild(Node leftChild){
 		
 			this.leftChild = leftChild;
@@ -217,7 +202,7 @@ public class HuffmanEncoding {
 			auxSB1.append(text.charAt(i));
 			if (code.containsValue(auxSB1.toString())) {
 				
-				for(Map.Entry entry: code.entrySet()){
+				for(Map.Entry entry: code.entrySet()) {
 					if(auxSB1.toString().equals(entry.getValue())){
 						key = entry.getKey().toString();
 						break;
@@ -250,8 +235,6 @@ public class HuffmanEncoding {
 
 		}
 		System.out.println(codifica);
-
-
 		return codifica;
 	}
 	

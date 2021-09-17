@@ -1,3 +1,4 @@
+package modulo3.src.main.java.com.integradora;
 /* -----
 
  	Integrantes
@@ -8,7 +9,7 @@
 	Gustavo Geyer, 
 	Michael Leite.
 
-*/ -----
+*/
 
 import java.util.Hashtable;
 import java.io.*;
